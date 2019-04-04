@@ -12,20 +12,27 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
               body1: TextStyle(fontSize: 18.0),
               button: TextStyle(fontSize: 18.0))),
-      home: Day03HomePage(),
+      home: Day04HomePage(),
     );
   }
 }
 
-class Day03HomePage extends StatelessWidget {
+class Day04HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Flutter Day 04")),
-        body: Container(
-          padding: EdgeInsets.all(16.0),
-          child: ControlsWidget()
-        ));
+        appBar: AppBar(
+          title: Text("Flutter Day 04"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("Show", style: TextStyle(color: Colors.white)),
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SecondRoute())),
+            )
+          ],
+        ),
+        body:
+            Container(padding: EdgeInsets.all(16.0), child: ControlsWidget()));
   }
 }
 
@@ -52,7 +59,13 @@ class _ControlsState extends State<ControlsWidget> {
       children: <Widget>[
         Text(_text),
         TextField(onChanged: _updateEditContents),
-        RaisedButton(child: Text("Click me!"), onPressed: _copyToText)
+        RaisedButton(child: Text("Click me!"), onPressed: _copyToText),
+        RaisedButton(
+            child: Text("Show New View"),
+            onPressed: () => {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SecondRoute()))
+                })
       ],
     );
   }
@@ -63,3 +76,16 @@ class ControlsWidget extends StatefulWidget {
   _ControlsState createState() => _ControlsState();
 }
 
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text("Flutter Day 04")),
+        body: Container(
+            padding: EdgeInsets.all(16.0),
+            child: Center(
+                child: RaisedButton(
+                    child: Text("Close Modal"),
+                    onPressed: () => Navigator.pop(context)))));
+  }
+}
