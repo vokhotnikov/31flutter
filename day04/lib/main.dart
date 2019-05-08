@@ -25,7 +25,8 @@ class Day04HomePage extends StatelessWidget {
           title: Text("Flutter Day 04"),
           actions: <Widget>[
             FlatButton(
-              child: Text("Show", style: TextStyle(color: Colors.white)),
+              child: Text("Show",
+                  style: TextStyle(color: Colors.white)),
               onPressed: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SecondRoute())),
             )
