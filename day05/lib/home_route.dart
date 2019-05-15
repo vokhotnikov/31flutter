@@ -11,13 +11,12 @@ class HomeRoute extends BaseRoute {
   @override
   Widget build(BuildContext context) {
     return withScaffoldAndAppBar(child: ControlsWidget(),
-    actions: [
-      appBarButton("Show",
-        action: () => _navigateToSecondRoute(context)
-      )
-    ]);
+        actions: [
+          appBarButton("Show",
+              action: () => _navigateToSecondRoute(context)
+          )
+        ]);
   }
-
 }
 
 class _ControlsState extends State<ControlsWidget> {
